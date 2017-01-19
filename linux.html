@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Using GNU/Linux in this course</title>
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro'
+    rel='stylesheet' type='text/css' />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+  <div id="container">
+
+<p><a href="index.html">CISC 3110</a></p>
+    
+<h2>Using GNU/Linux in this course</h2>
+    
+    <p> One of the goals of this class is to provide you with some experience developing software in a Unix-like environment. We will primarily be using GNU/Linux, a free/open-source operating system that has much in common with Unix. (GNU/Linux is the foundation of the Android operating system; it's also used as a development environment at many prominent software companies, including <a href="https://en.wikipedia.org/wiki/Goobuntu">Google</a>).</p>
+
+<p>We will use Linux in the classroom labs, and if you have a computer you can install software on, you can use exactly the same environment as we'll use in class. This page describes how. If you already are running Linux on your personal computer, skip down to the very bottom of this page. Or, if you don't have access you can install software on, you can use the Internet to <a href="linuxlab.html">connect to College computers</a> running Linux (though the experience will not be <em>quite</em> the same).</p>
+
+
+    <p>In both classroom and at home, we'll be using a Linux <em>virtual machine</em>&mdash;you don't need to install a new operating system on your computer, but you'll install some software that lets your computer, as it is, run Linux. Specifically, we'll be using <a href="http://virtualbox.com">VirtualBox</a> to run Linux, plus <a href="http://vagrantup.com">Vagrant</a> to make installing and running even easier.</p>
+
+    <p>(Note: if you already are running Linux on your personal computer, skip down to the very bottom of this page.)</p>
+
+
+    <h3>Downloads</h3>
+
+    <p>To run Linux for this class, you will need to install two pices of software:</p>
+
+    <ol>
+      <li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>. This is the software that allows your computer to emulate a wide variety of other operating systems. When VirtualBox talks about a "host," it refers to the operating system of the "actual" computer you're using. So, if you have Windows computer, download and install "VirtualBox for Windows hosts;" if you have a Mac, download and install "VirtualBox for MacOS hosts."</li>
+
+      <li><a href="https://www.vagrantup.com/downloads.html">Vagrant</a> is a tool that makes it easy to manage virtual systems. Again, download and install the version (Windows/Mac) that's right for you.</li>
+
+    </ol>
+
+    <h3>Getting it running</h3>
+
+    <p>In the instructions below, I'll talk about "the console." This is a generic term for a command line interpreter: if you're using a Mac, run the <strong>Terminal</strong> application; if you're using Windows, open a <a href="http://windows.microsoft.com/en-us/windows-vista/open-a-command-prompt-window">command prompt window</a>.<p>
+
+        
+    <p>To get Linux running, you need to do three things with vagrant (note that vagrant "manages" VirtualBox for you, so you won't need to do much with VirtualBox directly). Vagrant runs from the console, so fire up your console, and then...</p>
+
+    <ol>
+       <li>First, install one vagrant plugin (this helps with integrating your "guest" Linux operating system with your "host" system):
+
+        <p><code> vagrant plugin install vagrant-vbguest</code></p>
+        
+         <p>It will probably take a few seconds to  download the plugin and install it.</p></li>
+
+       <li>Then, you'll need to add the Linux I've set up for you.
+       This is a largish download (over 2GB), so it may take a little
+       while; it will be faster if you are able to download it while
+       on campus:
+
+
+         <p><code>vagrant box add http://www.sci.brooklyn.cuny.edu/~sdexter/cisc3110.box --name cisc3110.box</code></p>
+
+
+         <p>You should see a message like "Successfully added box 'cisc3110.box' (v0) for 'virtualbox'." </li>
+
+         <li>Next you need to initialize vagrant with the freshly downloaded box:</p>
+
+       <p><code>vagrant init cisc3110.box</code></p>
+
+       <p>This will be quick, and you'll get a message stating "A 'Vagrantfile' has been placed in this directory."</p></li>    
+
+      <li>Finally, start the Linux system with this simple command:
+            
+        <p><code>vagrant up</code></p>
+
+        <p>The first time you start the virtual machine, it will go
+        through an update process, which may take several minutes, and
+        you'll see various messages on your console. Just watch and
+        wait until,  eventually, you will get back to a prompt on your
+        console, and you should see window with a Linux GUI. awaiting
+        your instructions. (You could see all kinds of messages about
+        "Guest Additions," "Inappropriate ioctl," and so on; the
+        process may take 5 to 10 minutes this first time. Don't worry.)</p>
+
+<p>If you see a message something like "You may need to restart the guest system," then (once you see a prompt) say <code>vagrant halt</code> to shut down the virtual machine, then <code>vagrant up</code> to restart.</p>
+      </li>
+    </ol>
+
+    <p>Finally, it's possible that vagrant will start Linux for you,
+    but you won't see anything&mdash;if everything works correctly,
+      you should see a new window that looks something
+    like <a href="http://i1-news.softpedia-static.com/images/news2/ubuntu-16-04-lts-xenial-xerus-final-beta-screenshot-tour-502161-2.jpg">this</a>.
+    If that doesn't happen, it's easy to fix, but you'll have to do
+      a little bit of editing. First, say</p>
+
+           <p><code>vagrant halt</code></p>
+ 
+      <p>to stop vagrant. Then, in the directory where you issue all
+    the vagrant commands, you should see a file called <code>
+      Vagrantfile
+      </code>. Open this file with a simple text editor (like Notepad
+      on Windows or TextEdit on a Mac). This is a Ruby script, with a
+      lot of stuff commented out. Look for a set of lines that looks
+      like this:
+    </p>
+
+    <p><pre><code>
+  # config.vm.provider "virtualbox" do |vb|
+  #   # Display the VirtualBox GUI when booting the machine
+  #   vb.gui = true
+  #
+  #   # Customize the amount of memory on the VM:
+  #   vb.memory = "1024"
+  # end
+      </code></pre>
+    </p>
+
+    <p>Edit this to uncomment 3 lines:</p>
+
+    <p><pre><code>
+    config.vm.provider "virtualbox" do |vb|
+  #   # Display the VirtualBox GUI when booting the machine
+      vb.gui = true
+  #
+  #   # Customize the amount of memory on the VM:
+  #   vb.memory = "1024"
+    end
+      </code></pre>
+    </p>
+
+    <p>Then say <code>
+      vagrant up
+      </code>, and this time you should see Linux.
+    </p>
+
+    
+    <h3>Working with your virtual machine</h3>
+
+    <p>We'll talk more about working with Linux in particular; here I just want to point out a few advantages to using this kind of virtual machine:</p>
+
+    <ol>
+      <li>
+        <p>"Synced folders." Both the "host system" (your computer)
+      and the "guest system" (Linux) can access some of your files. If
+      you followed my suggestion and started running vagrant from a
+      directory you'll use for this class, then all the contents of
+      that folder can be read and written by both systems. THat means,
+      for example, you can write code in Linux but then print/email
+      the file from the host. (You could also set up printing from
+          within the guest system, if you like).</p>
+
+        <p>Specifically, by default your vagrant setup connects the
+        "host directory" you started vagrant from with a directory in
+        Linux called <code>/sync</code>. If you look in this directory, you should see the
+        same files listed as you can see from your host computer. I
+        strongly recomend that you keep all your work in this folder.
+        If you don't like always having to move there to work, you
+        have a couple options. Probably the most straightforward way
+        is to tell vagrant to use a different folder in Linux. (For
+        example, your "home directory" on Linux
+        is <code>/home/vagrant</code>, so maybe you'd to put stuff for
+        this class in a directory
+          called <code>/home/vagrant/cisc3110</code>.)
+        Look <strong>carefully</strong> at the
+        instructions <a href="https://www.vagrantup.com/docs/synced-folders/basic_usage.html">here</a>.
+        In my example, you could edit your <code>Vagrantfile</code> to
+        add the line <code>config.vm.synced_folder ".",
+        "/home/vagrant/cisc3110"</code>. Remember that if you
+        introduce any errors in the <code>Vagrantfile</code>, vagrant
+        may not start properly. I recommend making a copy
+        of <code>Vagrantfile</code> before you start editing, so that
+        it's easy to get back to a working version if you do make a mistake.</p>
+          
+
+      </li>
+
+      <li>No catastrophes. You should feel free to mess around with your Linux system as much as you want. If you really screw it up, you can just issue the command <code>vagrant destroy</code> to wipe out the screwed-up system (but the sync-ed files won't be deleted), then say <code>vagrant up</code>&mdash;just as with your initial installation, this will take a few minutes to reinstall itself, but it's still pretty painless.</li>
+
+      <li>Quick startup/shutdown. Once you have your system running, you have two options for saving your work. First, you can say <code>vagrant suspend</code>. This will take just a few seconds to save the <em>exact</em> state of your Linx machine, so when you want to carry on with your work, you can just say <code>vagrant resume</code>, and in a few seconds your Linux machine will appear exactly as you left it (and, in the meantime, Linux isn't consuming any memory/CPU, but it does take extra disk space to save the state of your machine). Or, you can shut down the Linux machine completely with the command <code>vagrant halt</code>, and then, later <code>vagrant up</code> when you want to "reboot" and continue working. This takes a little longer to shutdown/startup, but doesn't use extra disk space. The differences among <code>
+          destroy</code>, <code>
+          suspend</code>, and <code>
+          halt</code>
+        are briefly described <a href="https://www.vagrantup.com/docs/getting-started/teardown.html">here</a>.</li>
+    </ol>
+
+    <p>Note that the username and password for your Linux installation are both <code>vagrant</code>. (Mostly, you'll need this to get out of the screen-saver when it locks your screen.)</p>
+
+
+    <h3>Ubuntu 16.04</h3>
+
+    <p>The particular version of Linux we're running is Ubuntu 16.04.
+    On the surface, it's not <em>too</em> different from other
+    operating systems you're familiar with. But figuring out "where everything is" takes a little time. You should read through the <a href="https://help.ubuntu.com/lts/ubuntu-help/index.html">online documentation</a>; you might also get something out of this <a href="https://www.youtube.com/watch?v=Gz2Z2CayHPg">intro video</a>.</p>
+
+    <p>You'll also need to have familiarity with the command line, so here's a good <a href="http://www.ee.surrey.ac.uk/Teaching/Unix/">tutorial</a> for that, or you might prefer <a href="http://www.upscale.utoronto.ca/GeneralInterest/Harrison/LearnLinux/Module1.html">this one</a>.</p>
+    
+        
+
+    <h3>If you're already running Linux</h3>
+
+    <p>The "box" you run with vagrant has everything we need for class already on it, so if you've done the vagrant thing, then ignore this section. If you're already using a Linux operating system on your computer, you probably have everything we need for this class, but just to be sure, install the packages for developiong C++ programs, and also make sure you have a recent version of emacs:</p>
+
+    <p>
+    <code>sudo apt-get update</code><br/>
+    <code>sudo apt-get install build-essential</code><br/>
+    <code>sudo apt-get install emacs24</code><br/>
+    </p>
+
+    <p>On the vagrant box, I've added some customizations for the
+    editors <code>vim</code> and <code>
+        emacs
+      </code>. If you don't already have customizations you like,
+      we'll discuss what you should do.
+    </p>
+
+ 
+
+        <hr />
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+          "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Accessing the College's Linux Lab</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro'
+          rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+
+  <body>
+    <div id="container">
+
+      <p><a href="index.html">CISC 3110</a></p>
+      
+      <h2>Accessing the College's Linux Lab</h2>
+      
+      <p>It's always good to have access to another Linux system; fortunately the College has a Linux lab with a few dozen machines running Linux. To access these, you first need to go to the W.E.B. and ask for your Linux account information (everyone registered for this class has one). From there, you may either go directly to the Linux lab room (130), or you may connect to those machines via the Internet (you'll get a sheet with this information).</p>
+
+      <p> You will need  <code>ssh</code> (secure shell) to connect to the ITS computers.  ssh comes 
+        with Linux, Unix or the Mac operating system, but if you use Windows, you will need to install 
+        MS windows OS you will need to install some software.
+        
+      </p>
+      <h3>For Windows</h3>
+     There are several possibilites; 
+      <ul>
+        <li><a href="http://sourceforge.net/projects/sshwindows/files/OpenSSH%20for%20Windows%20-%20Release//">Open SSh for Windows</a></li>
+
+        <li><a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">putty and psftp download</a></li>
+
+        <li><a href="http://www.bitvise.com/download-area">Bitvise Tunnelier or WinSSHD</a></li>
+      </ul>
+      <p>
+       Try one, or all. (putty and BitVise have GUI interfaces)</p>
+
+      <h3>Using ssh</h3>
+
+     <p>On Mac and Linux machines, or using the Windows command prompt, connec to a Linux machine with a command like</p>
+
+      <p><code>ssh &lt;username&gt;@&lt;address&gt;</code></p>
+
+      <p>where  &lt;username&gt; is the username you are given at the W.E.B., and &lt;address&gt is one of the IP addresses listed below</p>
+
+      <h3>Accessible lab machines</h3>
+
+      <p>While there are quite a few machines in the lab, only a small handful can be accessed directly from off campus. Their IP adddresses are:</p>
+
+      <pre>
+        146.245.252.150
+        146.245.252.151
+        146.245.252.31
+        146.245.252.34
+        146.245.252.35
+        146.245.252.41</pre>
+      
+      <h3>Working over an ssh connection</h3>
+      <p>This is very important: over ssh, you will not be able to access the full graphical user interface you could use if you were "in person." You are limited to using the terminal. This is a situation that may arise often in your career; for this reason, I strongly recommend that you get at least basic familiarity with using <code>emacs</code> or <code>vi</code> in the terminal&mdash;it's a skill that will come in surprisingly handy.</p>
+      
+          
+          </hr>
+          
+     
+        <hr />
+      </div>
+    </body>
+  </html>

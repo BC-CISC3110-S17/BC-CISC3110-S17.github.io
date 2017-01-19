@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Testing with CppUTest</title>
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro'
+    rel='stylesheet' type='text/css' />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+  <div id="container">
+
+<h2>Getting Started with <code>CppUTest</code></h2>
+    
+    <p>If you want to experiment with a testing framework such as
+    CppUnitLite, the framework CppUTest is very similar. And it's
+    already installed on your vagrant virtual machine.</p>
+
+<p>You should start by looking at
+  the <a href="http://cpputest.github.io/manual.html">manual</a>,
+  which has some simple example near the beginning. The manual also
+  talks about some requirements to any <code>makefile</code> you use
+  with CppUTest; to summarize, the makefile for any project in which you want to use CppUTest needs to include a few definitions:
+
+      <code>
+        <ul style="list-style-type:none">
+          <li>export CPPUTEST_HOME=/usr/share</li>
+          <li>CPPFLAGS += -I$(CPPUTEST_HOME)/include</li>
+          <li>LD_LIBRARIES = -L$(CPPUTEST_HOME)/lib -lCppUTest -lCppUTestExt</li>
+        </ul>
+        </code>
+    </p>
+    <p>
+      And the recipe to link your executable needs to look something like</p>
+
+    <p><code>
+        <ul style="list-style-type:none">
+          <li>test: test.o</li>
+          <li>&nbsp;&nbsp;g++ -g  -o test test.o $(LD_LIBRARIES)</li>
+          </ul>
+        </code>
+    </p>
+
+    </div>
+</body>
+</html>
