@@ -1,0 +1,19 @@
+Dear students, 
+
+Welcome to CISC 3110, Advanced Programming Techniques. In advance of our first meeting, I wanted to share a few announcements and invite you to get started on some class-related work. 
+
+1. Please review the course website at  http://bc-cisc3110-s17.github.io/. Please bookmark this address! The main page is the course syllabus; you may want to review it now. 
+
+2. Please get the textbook as soon as you can (in either electronic or hardcopy form), as we will be using it immediately. The details are on the course main page.
+
+3. Third, the course calendar is linked from the syllabus; it can also be 
+reached directly at http://bc-cisc3110-s17.github.io/calendar.html. It will be updated with additional links, and the schedule may shift around a bit, but it nonetheless contains a lot of useful information. Among other things, it asks you to do some reading before our first meeting.
+
+4. Fourth,  I'll be teaching the class using "Team-Based Learning." Some of you have had this experience with me before; others may have been in other classes organized this way. If you're new to Team-Based Learning, please read the main page of the site carefully (and if you've been in my courses before, you might want to read to see a few small changes I've made).
+
+5. Finally, this course will teach you how to work in a Linux environment (if you're not already familiar with Linux). If you have a computer you can install software on, I strongly urge you to install a Linux "virtual machine" on it before classes start--especially if you have a laptop you can bring to class! I have very specific instructions for this process here http://bc-cisc3110-s17.github.io/linux.html (this page is also linked from the course resources page http://bc-cisc3110-s17.github.io/resources.html). Note that this won't replace whatever else you have on your computer; it's just another application. This is exactly the Linux environment that I will be using on my computer in class. 
+
+I don't expect you to know much about Linux at the beginning of the course, but installing this (and maybe starting to play around with it) will be a great first step. 
+
+Looking forward to meeting all of you! 
+Scott Dexter 
